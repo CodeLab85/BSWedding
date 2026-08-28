@@ -136,21 +136,38 @@
             background: #fff;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 16px;
-            font-size: 1rem;
-            font-family: 'Times New Roman', Times, serif;
-            letter-spacing: 0.5px;
+            padding: 14px 16px;
             cursor: pointer;
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
             transition: all 0.3s ease;
             position: relative;
+            text-align: left;
+        }
+
+        .task-title {
+            display: block;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            color: var(--primary-green);
+            margin-bottom: 3px;
+        }
+
+        .task-desc {
+            display: block;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.85rem;
+            color: #666;
         }
 
         .task.completed {
             background-color: var(--light-green);
-            color: var(--primary-green);
             border-color: var(--accent-sage);
-            font-weight: bold;
+        }
+
+        .task.completed .task-title {
+            color: var(--primary-green);
         }
         
         .task.completed::after {
@@ -160,6 +177,8 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 1.3rem;
+            color: var(--primary-green);
+            font-weight: bold;
         }
 
         /* --- BELOHNUNG --- */
@@ -254,12 +273,30 @@
         <p class="intro">Erfülle alle Aufgaben und entdecke die Überraschung</p>
 
         <div id="task-list">
-            <div class="task" id="task1" onclick="startTaskUpload('task1')">Dancefloor-Legende (Bester Tänzer)</div>
-            <div class="task" id="task2" onclick="startTaskUpload('task2')">Tränen gelacht (Gemeinsames Lachen)</div>
-            <div class="task" id="task3" onclick="startTaskUpload('task3')">Selfie-Time (Selfie mit Braut/Bräutigam)</div>
-            <div class="task" id="task4" onclick="startTaskUpload('task4')">Die Gang vereint (Team-Foto)</div>
-            <div class="task" id="task5" onclick="startTaskUpload('task5')">Style-Ikone (Das coolste Outfit)</div>
-            <div class="task" id="task6" onclick="startTaskUpload('task6')">Prost & Genuss (Beim Trinken erwischt)</div>
+            <div class="task" id="task1" onclick="startTaskUpload('task1')">
+                <span class="task-title">Dancefloor-Legende</span>
+                <span class="task-desc">Der beste Tänzer</span>
+            </div>
+            <div class="task" id="task2" onclick="startTaskUpload('task2')">
+                <span class="task-title">Tränen gelacht</span>
+                <span class="task-desc">Gemeinsames Lachen</span>
+            </div>
+            <div class="task" id="task3" onclick="startTaskUpload('task3')">
+                <span class="task-title">Selfie-Time</span>
+                <span class="task-desc">Selfie mit Braut oder Bräutigam</span>
+            </div>
+            <div class="task" id="task4" onclick="startTaskUpload('task4')">
+                <span class="task-title">Die Gang vereint</span>
+                <span class="task-desc">Team-Foto</span>
+            </div>
+            <div class="task" id="task5" onclick="startTaskUpload('task5')">
+                <span class="task-title">Style-Ikone</span>
+                <span class="task-desc">Das coolste Outfit</span>
+            </div>
+            <div class="task" id="task6" onclick="startTaskUpload('task6')">
+                <span class="task-title">Prost & Genuss</span>
+                <span class="task-desc">Beim Trinken erwischt</span>
+            </div>
         </div>
 
         <!-- BELOHNUNG -->
