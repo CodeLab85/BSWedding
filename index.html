@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Babsi & Stefan Hochzeit</title>
+    <title>Barbara & Stefan Hochzeit</title>
     <style>
         /* Angepasst an das Eukalyptus / Papeterie-Design */
         :root {
@@ -229,7 +229,6 @@
         <h1>Barbara & Stefan</h1>
         <p class="intro">Teile deine schönsten Momente mit uns</p>
 
-        <!-- Aktualisierter Hinweis (Vorschlag 1) -->
         <div class="photo-hint">
             📸 <strong>Teilt eure schönsten Momente mit uns!</strong> Wir freuen uns riesig über all eure Schnappschüsse. <br><br>✨ <strong>P.S.:</strong> Beim Fotospiel wartet außerdem eine kleine Überraschung auf euch!
         </div>
@@ -255,10 +254,12 @@
         <p class="intro">Erfülle alle Aufgaben und entdecke die Überraschung</p>
 
         <div id="task-list">
-            <div class="task" id="task1" onclick="startTaskUpload('task1')">Selfie mit der Braut</div>
-            <div class="task" id="task2" onclick="startTaskUpload('task2')">Das coolste Outfit</div>
-            <div class="task" id="task3" onclick="startTaskUpload('task3')">Jemand beim Lachen</div>
-            <div class="task" id="task4" onclick="startTaskUpload('task4')">Der beste Tänzer</div>
+            <div class="task" id="task1" onclick="startTaskUpload('task1')">Dancefloor-Legende (Bester Tänzer)</div>
+            <div class="task" id="task2" onclick="startTaskUpload('task2')">Tränen gelacht (Gemeinsames Lachen)</div>
+            <div class="task" id="task3" onclick="startTaskUpload('task3')">Selfie-Time (Selfie mit Braut/Bräutigam)</div>
+            <div class="task" id="task4" onclick="startTaskUpload('task4')">Die Gang vereint (Team-Foto)</div>
+            <div class="task" id="task5" onclick="startTaskUpload('task5')">Style-Ikone (Das coolste Outfit)</div>
+            <div class="task" id="task6" onclick="startTaskUpload('task6')">Prost & Genuss (Beim Trinken erwischt)</div>
         </div>
 
         <!-- BELOHNUNG -->
@@ -279,7 +280,7 @@
     <script>
         const cameraInput = document.getElementById('camera-input');
         let currentAction = null; 
-        const allTasks = ['task1', 'task2', 'task3', 'task4'];
+        const allTasks = ['task1', 'task2', 'task3', 'task4', 'task5', 'task6'];
 
         const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwD-eLnUCFmpJN4Dmk11luMvnzNH0iAXdZYR_CQYR2X7gm9DuBCQHC7HZf94e0uy7FJ/exec';
         const SECRET_KEY = 'BabsiStefanHochzeit2026';
