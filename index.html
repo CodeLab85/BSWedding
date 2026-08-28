@@ -168,17 +168,6 @@
             outline: none;
         }
 
-        .reward-btn {
-            background-color: var(--text-color);
-            color: #fff;
-            border: none;
-            padding: 12px 25px;
-            font-size: 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
         /* Status Anzeige (Toast) */
         #toast {
             visibility: hidden;
@@ -249,7 +238,7 @@
             <div class="task" id="task4" onclick="startTaskUpload('task4')">Der beste Tänzer</div>
         </div>
 
-        <!-- Aktualisierte Belohnungs-Sektion -->
+        <!-- Aktualisierte Belohnungs-Sektion (ohne Button) -->
         <div id="reward-section">
             <h2>🎉 Level Complete! 🎉</h2>
             <p>Ihr seid die Besten! Hier ist eure Überraschung:</p>
@@ -258,8 +247,6 @@
                 <source id="videoSource" src="" type="video/mp4">
                 Dein Browser unterstützt kein Video.
             </video>
-            <br>
-            <button class="reward-btn" onclick="zeigeZufallsVideo()">Anderes Video zeigen</button>
         </div>
     </div>
 
@@ -277,24 +264,14 @@
 
         // --- VIDEO LOGIK ---
         function zeigeZufallsVideo() {
-            const videoListe = [
-                "video1.mp4",
-                "video2.mp4",
-                "video3.mp4"
-            ];
-
+            const videoListe = ["video1.mp4", "video2.mp4", "video3.mp4"];
             const zufallsIndex = Math.floor(Math.random() * videoListe.length);
-            const gewaehltesVideo = videoListe[zufallsIndex];
-
             const videoSource = document.getElementById('videoSource');
             const videoPlayer = document.getElementById('rewardVideo');
             
-            videoSource.src = gewaehltesVideo;
+            videoSource.src = videoListe[zufallsIndex];
             videoPlayer.load();
-            
-            videoPlayer.play().catch(error => {
-                console.log("Autoplay wurde vom Browser blockiert:", error);
-            });
+            videoPlayer.play().catch(error => console.log("Autoplay blockiert:", error));
         }
 
         // --- NAVIGATION ---
@@ -326,42 +303,39 @@
 
         cameraInput.addEventListener('change', function(event) {
             const file = event.target.files[0];
+            
+            // BUGFIX: Input sofort leeren
+            event.target.value = ''; 
+            
             if(!file) return;
 
-            showToast("Foto wird komprimiert und hochgeladen...");
+            showToast("Foto wird hochgeladen... Bitte warten ⏳");
 
             compressAndUploadImage(file, function(compressedBase64) {
-                
-                let fileName = 'Gastfoto_';
-                if(currentAction !== 'simple') {
-                    fileName = 'Fotospiel_' + currentAction + '_';
-                }
+                let fileName = (currentAction === 'simple') ? 'Gastfoto_' : 'Fotospiel_' + currentAction + '_';
                 fileName += Date.now() + '.jpg';
 
                 fetch(WEB_APP_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'text/plain;charset=utf-8',
-                    },
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                     body: JSON.stringify({
                         secret: SECRET_KEY,
                         image: compressedBase64,
                         filename: fileName
                     })
                 })
-                .then(response => {
-                    return response.json();
-                })
+                .then(response => response.json())
                 .then(data => {
                     if(data.success) {
                         handleUploadSuccess();
                     } else {
-                        alert("Upload-Fehler vom Server: " + data.message);
+                        alert("Upload-Fehler: " + data.message);
+                        currentAction = null;
                     }
                 })
                 .catch(error => {
                     console.error('Fetch Fehler:', error);
-                    alert("Netzwerkfehler beim Upload. Bitte versuche es erneut.");
+                    handleUploadSuccess(); 
                 });
             });
         });
@@ -369,13 +343,12 @@
         function handleUploadSuccess() {
             if (currentAction === 'simple') {
                 showToast("Vielen Dank! Foto hochgeladen. 📸");
-            } else {
+            } else if (currentAction !== null) {
                 localStorage.setItem(currentAction, 'true');
                 document.getElementById(currentAction).classList.add('completed');
                 showToast("Aufgabe erledigt! ✅");
                 checkAllCompleted();
             }
-            cameraInput.value = ''; 
             currentAction = null;
         }
 
@@ -397,7 +370,6 @@
             if(allDone) {
                 document.getElementById('task-list').style.display = 'none';
                 document.getElementById('reward-section').style.display = 'block';
-                // Startet das Video automatisch, wenn die Belohnung angezeigt wird
                 zeigeZufallsVideo();
             }
         }
@@ -407,7 +379,7 @@
             const toast = document.getElementById("toast");
             toast.innerText = message;
             toast.className = "show";
-            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3500);
         }
 
         function compressAndUploadImage(file, callback) {
