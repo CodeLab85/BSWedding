@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Babsi & Stefan Hochzeit</title>
     <style>
-        /* Grundlegendes Styling */
+        /* Angepasst an das Eukalyptus / Papeterie-Design */
         :root {
-            --primary-color: #d1bfae;
-            --secondary-color: #a3b899; 
-            --bg-color: #fdfbf7;
-            --text-color: #333;
+            --primary-green: #5a6e5d;
+            --light-green: #eaf0e8;
+            --accent-sage: #a3b899;
+            --bg-color: #fcfbf9;
+            --text-color: #2c352d;
+            --border-color: #d8ded5;
         }
 
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Times New Roman', Times, serif, 'Helvetica Neue', Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
@@ -23,35 +25,43 @@
         }
 
         h1 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            color: var(--primary-green);
+            text-transform: uppercase;
         }
 
         p.intro {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             color: #666;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-size: 0.95rem;
+            letter-spacing: 1px;
         }
 
-        /* --- HINWEISBOX (Handys) --- */
+        /* --- EDLE HINWEISBOX (Eukalyptus-Stil) --- */
         .photo-hint {
             background-color: #fff;
-            border-left: 5px solid var(--primary-color);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary-green);
             padding: 15px;
             margin-bottom: 25px;
-            border-radius: 8px;
-            font-size: 0.95rem;
+            border-radius: 6px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.9rem;
             line-height: 1.5;
             text-align: left;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            color: #555;
+            box-shadow: 0 2px 8px rgba(90, 110, 93, 0.04);
+            color: #444;
         }
 
         /* --- STARTSEITE (Menü) --- */
         #main-menu {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
             max-width: 400px;
             margin: 0 auto;
         }
@@ -59,13 +69,14 @@
         .menu-btn {
             background-color: #fff;
             color: var(--text-color);
-            border: 2px solid #eaeaea;
-            padding: 25px 20px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            padding: 22px 20px;
+            font-size: 1.1rem;
+            font-family: 'Times New Roman', Times, serif;
+            letter-spacing: 1px;
+            border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
@@ -75,28 +86,31 @@
 
         .menu-btn:active {
             transform: scale(0.98);
+            background-color: var(--light-green);
         }
 
-        .btn-upload { border-left: 6px solid var(--primary-color); }
-        .btn-game { border-left: 6px solid var(--secondary-color); }
-        .icon { font-size: 1.8rem; }
+        .btn-upload { border-top: 3px solid var(--primary-green); }
+        .btn-game { border-top: 3px solid var(--accent-sage); }
+        .icon { font-size: 1.5rem; }
 
         /* --- FOTOSPIEL SEKTION --- */
         #game-section {
             display: none;
             position: relative; 
             padding-top: 50px; 
+            max-width: 450px;
+            margin: 0 auto;
         }
 
         /* ZURÜCK-BUTTON */
         .back-btn {
-            background-color: #f0f0f0;
-            border: 1px solid #ddd;
-            color: #333;
-            font-size: 1rem;
-            font-weight: bold;
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            color: var(--primary-green);
+            font-size: 0.9rem;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             cursor: pointer;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 20px;
             display: inline-flex;
             align-items: center;
@@ -105,39 +119,38 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: background-color 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
         }
 
         .back-btn:active {
-            background-color: #e0e0e0;
+            background-color: var(--light-green);
         }
 
         #task-list {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            max-width: 500px;
-            margin: 0 auto;
+            gap: 12px;
         }
 
         .task {
             background: #fff;
-            border: 2px solid #eaeaea;
-            border-radius: 12px;
-            padding: 18px;
-            font-size: 1.1rem;
-            font-weight: bold;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 1rem;
+            font-family: 'Times New Roman', Times, serif;
+            letter-spacing: 0.5px;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
             transition: all 0.3s ease;
             position: relative;
         }
 
         .task.completed {
-            background-color: var(--secondary-color);
-            color: #fff;
-            border-color: var(--secondary-color);
+            background-color: var(--light-green);
+            color: var(--primary-green);
+            border-color: var(--accent-sage);
+            font-weight: bold;
         }
         
         .task.completed::after {
@@ -146,43 +159,54 @@
             right: 20px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
 
         /* --- BELOHNUNG --- */
         #reward-section {
             display: none;
-            margin-top: 40px;
-            padding: 30px 20px;
+            margin-top: 20px;
+            padding: 25px 15px;
             background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        #reward-section h2 {
+            font-family: 'Times New Roman', Times, serif;
+            color: var(--primary-green);
+            font-weight: normal;
+            letter-spacing: 1px;
         }
 
         #rewardVideo {
             width: 100%;
-            max-width: 400px;
-            border-radius: 10px;
+            max-width: 360px;
+            border-radius: 6px;
             background: #000;
-            margin-top: 15px;
+            margin-top: 10px;
             outline: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         /* Status Anzeige (Toast) */
         #toast {
             visibility: hidden;
             min-width: 250px;
-            background-color: #333;
+            background-color: var(--primary-green);
             color: #fff;
             text-align: center;
-            border-radius: 8px;
-            padding: 16px;
+            border-radius: 6px;
+            padding: 14px;
             position: fixed;
             z-index: 1;
             left: 50%;
             bottom: 30px;
             transform: translateX(-50%);
-            font-size: 1rem;
+            font-size: 0.95rem;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
         #toast.show {
@@ -193,7 +217,6 @@
         @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
         @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
         
-        /* Unsichtbarer Input */
         #camera-input { display: none; }
     </style>
 </head>
@@ -203,21 +226,21 @@
 
     <!-- STARTANSICHT -->
     <div id="main-menu">
-        <h1>Babsi & Stefan</h1>
-        <p class="intro">Teile deine schönsten Momente mit uns!</p>
+        <h1>Barbara & Stefan</h1>
+        <p class="intro">Teile deine schönsten Momente mit uns</p>
 
-        <!-- Hinzugefügter Hinweis -->
+        <!-- Hinweis im Eukalyptus-Design -->
         <div class="photo-hint">
-            📸 <strong>P.S.:</strong> Wir freuen uns riesig über all eure Fotos und Videos vom Feiern! Aber für die Trauung gilt: Handy in die Tasche, zurücklehnen und genießen – das macht unser Profi. Ihr sollt schließlich auch was von uns haben! 😉
+            📸 <strong>Hinweis zur Trauung:</strong> Wir freuen uns riesig über eure Fotos beim Feiern! Während der Trauung möchten wir euch bitten, die Handys in der Tasche zu lassen und den Moment zu genießen – unser Profi-Fotograf hält alles fest. ❤️
         </div>
         
         <button class="menu-btn btn-upload" onclick="startSimpleUpload()">
-            <span class="icon">📸</span>
+            <span class="icon">🌿</span>
             <span>Foto hochladen</span>
         </button>
         
         <button class="menu-btn btn-game" onclick="showGameSection()">
-            <span class="icon">🎲</span>
+            <span class="icon">✨</span>
             <span>Zum Fotospiel</span>
         </button>
     </div>
@@ -225,11 +248,11 @@
     <!-- FOTOSPIEL ANSICHT -->
     <div id="game-section">
         <button class="back-btn" onclick="showMainMenu()">
-            <span>⬅</span> Zurück
+            <span>←</span> Zurück
         </button>
         
-        <h2>Das Fotospiel</h2>
-        <p class="intro">Knipse ein Foto zu jeder Aufgabe und schalte eine Überraschung frei!</p>
+        <h1 style="font-size: 1.6rem; margin-top: 15px;">Das Fotospiel</h1>
+        <p class="intro">Erfülle alle Aufgaben und entdecke die Überraschung</p>
 
         <div id="task-list">
             <div class="task" id="task1" onclick="startTaskUpload('task1')">Selfie mit der Braut</div>
@@ -238,10 +261,10 @@
             <div class="task" id="task4" onclick="startTaskUpload('task4')">Der beste Tänzer</div>
         </div>
 
-        <!-- Aktualisierte Belohnungs-Sektion (ohne Button) -->
+        <!-- BELOHNUNG -->
         <div id="reward-section">
-            <h2>🎉 Level Complete! 🎉</h2>
-            <p>Ihr seid die Besten! Hier ist eure Überraschung:</p>
+            <h2>✨ Überraschung ✨</h2>
+            <p style="font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; color: #666;">Ihr habt es geschafft! Hier ist euer exklusives Video:</p>
             
             <video id="rewardVideo" controls playsinline>
                 <source id="videoSource" src="" type="video/mp4">
@@ -258,11 +281,9 @@
         let currentAction = null; 
         const allTasks = ['task1', 'task2', 'task3', 'task4'];
 
-        // --- HIER IST DEINE WEB-APP-URL ---
         const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwD-eLnUCFmpJN4Dmk11luMvnzNH0iAXdZYR_CQYR2X7gm9DuBCQHC7HZf94e0uy7FJ/exec';
         const SECRET_KEY = 'BabsiStefanHochzeit2026';
 
-        // --- VIDEO LOGIK ---
         function zeigeZufallsVideo() {
             const videoListe = ["video1.mp4", "video2.mp4", "video3.mp4"];
             const zufallsIndex = Math.floor(Math.random() * videoListe.length);
@@ -274,7 +295,6 @@
             videoPlayer.play().catch(error => console.log("Autoplay blockiert:", error));
         }
 
-        // --- NAVIGATION ---
         function showGameSection() {
             document.getElementById('main-menu').style.display = 'none';
             document.getElementById('game-section').style.display = 'block';
@@ -286,7 +306,6 @@
             document.getElementById('main-menu').style.display = 'flex';
         }
 
-        // --- UPLOAD LOGIK ---
         function startSimpleUpload() {
             currentAction = 'simple';
             cameraInput.click();
@@ -303,8 +322,6 @@
 
         cameraInput.addEventListener('change', function(event) {
             const file = event.target.files[0];
-            
-            // BUGFIX: Input sofort leeren
             event.target.value = ''; 
             
             if(!file) return;
@@ -352,7 +369,6 @@
             currentAction = null;
         }
 
-        // --- SPIEL LOGIK ---
         window.onload = function() {
             allTasks.forEach(taskId => {
                 if(localStorage.getItem(taskId) === 'true') {
@@ -374,7 +390,6 @@
             }
         }
 
-        // --- HILFSFUNKTIONEN ---
         function showToast(message) {
             const toast = document.getElementById("toast");
             toast.innerText = message;
