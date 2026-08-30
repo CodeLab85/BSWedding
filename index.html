@@ -141,7 +141,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
             transition: all 0.3s ease;
             position: relative;
-            text-align: center; /* Zentriert den Inhalt */
+            text-align: center;
         }
 
         .task-title {
@@ -207,6 +207,21 @@
             margin-top: 10px;
             outline: none;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Pixel-Schrift Style für den Schlussspruch */
+        .pixel-callout {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 0.85rem;
+            background-color: var(--light-green);
+            color: var(--primary-green);
+            border: 2px dashed var(--accent-sage);
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         /* Status Anzeige (Toast) */
@@ -287,7 +302,7 @@
             </div>
             <div class="task" id="task4" onclick="startTaskUpload('task4')">
                 <span class="task-title">Die Gang vereint</span>
-                <span class="task-desc">Gruppen-Foto</span>
+                <span class="task-desc">Team-Foto</span>
             </div>
             <div class="task" id="task5" onclick="startTaskUpload('task5')">
                 <span class="task-title">Style-Ikone</span>
@@ -308,6 +323,10 @@
                 <source id="videoSource" src="" type="video/mp4">
                 Dein Browser unterstützt kein Video.
             </video>
+
+            <div class="pixel-callout">
+                🎮 Danke für die Fotos, aber jetzt geht es ab auf die Tanzfläche! 💃🕺
+            </div>
         </div>
     </div>
 
@@ -323,7 +342,7 @@
         const SECRET_KEY = 'BabsiStefanHochzeit2026';
 
         function zeigeZufallsVideo() {
-            const videoListe = ["video1.mp4", "video2.mp4", "video3.mp4"];
+            const videoListe = ["video1.mp4", "video2.mp4", "video3.mp4", "video4.mp4"];
             const zufallsIndex = Math.floor(Math.random() * videoListe.length);
             const videoSource = document.getElementById('videoSource');
             const videoPlayer = document.getElementById('rewardVideo');
